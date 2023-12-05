@@ -16,16 +16,18 @@ public class Day1 {
                 if (number.charAt(0) == line.charAt(i)) {
                     if (Character.isDigit(line.charAt(i))) {
                         output = line.charAt(i);
+                        System.out.println(line.charAt(i));
                     }
 
                     if (number.charAt(1) == line.charAt(i + 1)) {
                         output = (char) num;
+                        System.out.println(line.charAt(i) + line.charAt(i+1) + line.charAt(i+2));
                     }
                 }
             }
         }
 
-        return 'f';
+        return output;
     }
 
     public boolean findLastNum(String[] listIn, String line) {
