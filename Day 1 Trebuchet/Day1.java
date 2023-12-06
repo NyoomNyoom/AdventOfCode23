@@ -4,35 +4,40 @@ import java.io.*;
 
 public class Day1 {
     public char findFirstNum(String[] listIn, String line) {
-        String tempString = "";
-        char output = '0';
+        for(int i = 0; i < line.length(); i++){
 
-        int num = 0;
-
-        for (String number : listIn) {
-            num++;
-
-            for (int i = 0; i < line.length(); i++) {
-                if (number.charAt(0) == line.charAt(i)) {
-                    if (Character.isDigit(line.charAt(i))) {
-                        output = line.charAt(i);
-                        System.out.println(line.charAt(i));
+            for (String number : listIn) {
+                if(line.charAt(i) == number.charAt(0)){
+                    if(Character.isDigit(line.charAt(i))) {
+                        return line.charAt(i);
                     }
+                }
 
-                    if (number.charAt(1) == line.charAt(i + 1)) {
-                        output = (char) num;
-                        System.out.println(line.charAt(i) + line.charAt(i+1) + line.charAt(i+2));
+                try{
+                    if(line.charAt(i) == number.charAt(0)){
+                        if(line.charAt(i+1) == number.charAt(1)){
+                            int num  = 0;
+                            
+                            for(String answer : listIn){
+                                num++;
+                                if(answer.equals(number)){
+                                    return(char)(num + '0');
+                                }
+                            }
+                        }
                     }
+                } catch (StringIndexOutOfBoundsException e) {
+                    //catching the end evauluation to move to next char in input line.
                 }
             }
         }
 
-        return output;
+        return '0';
     }
 
-    public boolean findLastNum(String[] listIn, String line) {
-
-        return false;
+    public char findLastNum(String[] listIn, String line) {
+        
+        return '0';
     }
 
     public boolean findNumber(String[] listIn, String line) {
@@ -57,21 +62,8 @@ public class Day1 {
 
                 String line = sc.nextLine();
 
-                for (int i = 0; i < line.length(); i++) {
-                    char c = line.charAt(i);
-                    if (Character.isDigit(c) || ) {
-                        if (numFound == 0) {
-                            firstNum = c;
-                            numFound++;
-                        } else {
-                            lastNum = c;
-                            numFound++;
-                        }
-                    }
-                    if (numFound == 1) {
-                        lastNum = firstNum;
-                    }
-                }
+                
+
                 System.out.println("FirstNum: " + firstNum);
                 System.out.println("LastNum: " + lastNum);
 

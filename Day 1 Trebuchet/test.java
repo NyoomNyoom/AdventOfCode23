@@ -3,7 +3,7 @@ public class test {
         String tempString = "";
         char output = 'f';
 
-        String line = "zclvhfz91zbdkrreightbzqttdxrone";
+        String line = "zclvsevenhfz91zbdkrreightbzqttdxrone";
         String[] listIn = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "1", "2", "3", "4",
                 "5", "6", "7", "8", "9" };
 
@@ -21,14 +21,14 @@ public class test {
                     if(line.charAt(i) == number.charAt(0)){
                         if(line.charAt(i+1) == number.charAt(1)){
                             int num  = 0;
-                            int numOut = 0;
+                            
                             for(String answer : listIn){
                                 num++;
                                 if(answer.equals(number)){
-                                    numOut = num;
+                                    output = (char)(num + '0');
                                 }
                             }
-                            System.out.println("Letter output: " + numOut);
+                            System.out.println("Letter output: " + output);
                         }
                     }
                 } catch (StringIndexOutOfBoundsException e) {
