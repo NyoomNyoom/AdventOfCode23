@@ -35,7 +35,7 @@ public class Day1 {
         return '0';
     }
 
-    public static char findLastNumber(String[] listIn, String line) {
+    public static char findLastNum(String[] listIn, String line) {
         char output = 'n';
 
         for (int i = 0; i < line.length(); i++) {
@@ -49,12 +49,26 @@ public class Day1 {
                 try {
                     if (line.charAt(i) == number.charAt(0)) {
                         if (line.charAt(i + 1) == number.charAt(1)) {
-                            int num = 0;
+                            if (line.charAt(i + 2) == number.charAt(2)) {
+                                if (number.length() > 3) {
+                                    if (line.charAt(i + 3) == number.charAt(3)) {
+                                        int num = 0;
 
-                            for (String answer : listIn) {
-                                num++;
-                                if (answer.equals(number)) {
-                                    output = (char) (num + '0');
+                                        for (String answer : listIn) {
+                                            num++;
+                                            if (answer.equals(number)) {
+                                                output = (char) (num + '0');
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    int num = 0;
+                                    for (String answer : listIn) {
+                                        num++;
+                                        if (answer.equals(number)) {
+                                            output = (char) (num + '0');
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -66,10 +80,6 @@ public class Day1 {
         }
 
         return output;
-    }
-
-    public boolean findNumber(String[] listIn, String line) {
-        return false;
     }
 
     public static void main(String[] args) {
@@ -91,19 +101,20 @@ public class Day1 {
 
                 String line = sc.nextLine();
 
-                System.out.println("FirstNum: " + firstNum);
-                System.out.println("LastNum: " + lastNum);
+                firstNum = findFirstNum(numberList, line);
+                lastNum = findLastNum(numberList, line);
 
                 String s = "" + firstNum + lastNum;
 
                 sum += Integer.parseInt(s);
 
-                System.out.println("Sum: " + s);
+                System.out.println("Comination: " + s);
+                System.out.println("Running sum: " + sum);
             }
         } catch (FileNotFoundException e) {
             System.out.println("Error: " + e);
         }
 
-        System.out.println("Sum: " + sum);
+        System.out.println("Total sum: " + sum);
     }
 }
