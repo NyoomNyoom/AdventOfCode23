@@ -1,27 +1,29 @@
 public class test {
-    public static char findFirstNumber(String[] listIn, String line){
+    public static char findFirstNumber(String[] listIn, String line) {
         char output = 'f';
-        for(int i = 0; i < line.length(); i++){
+        for (int i = 0; i < line.length(); i++) {
             for (String number : listIn) {
-                if(line.charAt(i) == number.charAt(0)){
-                    if(Character.isDigit(line.charAt(i))) {
+                if (line.charAt(i) == number.charAt(0)) {
+                    if (Character.isDigit(line.charAt(i))) {
                         output = line.charAt(i);
                         System.out.println("Digit output: " + output);
+                        return output;
                     }
                 }
 
-                try{
-                    if(line.charAt(i) == number.charAt(0)){
-                        if(line.charAt(i+1) == number.charAt(1)){
-                            int num  = 0;
-                            
-                            for(String answer : listIn){
+                try {
+                    if (line.charAt(i) == number.charAt(0)) {
+                        if (line.charAt(i + 1) == number.charAt(1)) {
+                            int num = 0;
+
+                            for (String answer : listIn) {
                                 num++;
-                                if(answer.equals(number)){
-                                    output = (char)(num + '0');
+                                if (answer.equals(number)) {
+                                    output = (char) (num + '0');
                                 }
                             }
                             System.out.println("Letter output: " + output);
+                            return output;
                         }
                     }
                 } catch (StringIndexOutOfBoundsException e) {
@@ -33,22 +35,37 @@ public class test {
         return output;
     }
 
-    public static char findLastNumber(String[] listIn, String line){
+    public static char findLastNumber(String[] listIn, String line) {
         char output = 'n';
-        int indexFound = -1;
 
-        for(int i = 0; i < line.length();i++){
-            for(String number : listIn){
-                if(line.charAt(i) == number.charAt(0)){
-                    if(Character.isDigit(line.charAt(i))) {
+        for (int i = 0; i < line.length(); i++) {
+            for (String number : listIn) {
+                if (line.charAt(i) == number.charAt(0)) {
+                    if (Character.isDigit(line.charAt(i))) {
                         output = line.charAt(i);
-                        indexFound = i;
                     }
+                }
+
+                try {
+                    if (line.charAt(i) == number.charAt(0)) {
+                        if (line.charAt(i + 1) == number.charAt(1)) {
+                            int num = 0;
+
+                            for (String answer : listIn) {
+                                num++;
+                                if (answer.equals(number)) {
+                                    output = (char) (num + '0');
+                                }
+                            }
+                        }
+                    }
+                } catch (StringIndexOutOfBoundsException e) {
+
                 }
             }
         }
 
-        return 'n';
+        return output;
     }
 
     public static void main(String[] args) {
@@ -56,13 +73,13 @@ public class test {
         char output = 'f';
 
         String line = "zclvsevenhfz91zbdkrreightbzqttdxrone";
-        String[] listIn = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "1", "2", "3", "4","5", "6", "7", "8", "9" };
-        
+        String[] listIn = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "1", "2", "3", "4",
+                "5", "6", "7", "8", "9" };
+
         char firstNum = findFirstNumber(listIn, line);
         char lastNum = findLastNumber(listIn, line);
 
-        System.out.println("Output: "+ output);
-
+        System.out.println("First number: " + firstNum + ", last number: " + lastNum);
 
     }
 }
