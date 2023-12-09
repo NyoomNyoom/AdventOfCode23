@@ -1,14 +1,7 @@
 public class test {
-    public static void main(String[] args) {
-        String tempString = "";
+    public static char findFirstNumber(String[] listIn, String line){
         char output = 'f';
-
-        String line = "zclvsevenhfz91zbdkrreightbzqttdxrone";
-        String[] listIn = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "1", "2", "3", "4",
-                "5", "6", "7", "8", "9" };
-
         for(int i = 0; i < line.length(); i++){
-
             for (String number : listIn) {
                 if(line.charAt(i) == number.charAt(0)){
                     if(Character.isDigit(line.charAt(i))) {
@@ -37,6 +30,39 @@ public class test {
             }
         }
 
+        return output;
+    }
+
+    public static char findLastNumber(String[] listIn, String line){
+        char output = 'n';
+        int indexFound = -1;
+
+        for(int i = 0; i < line.length();i++){
+            for(String number : listIn){
+                if(line.charAt(i) == number.charAt(0)){
+                    if(Character.isDigit(line.charAt(i))) {
+                        output = line.charAt(i);
+                        indexFound = i;
+                    }
+                }
+            }
+        }
+
+        return 'n';
+    }
+
+    public static void main(String[] args) {
+        String tempString = "";
+        char output = 'f';
+
+        String line = "zclvsevenhfz91zbdkrreightbzqttdxrone";
+        String[] listIn = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "1", "2", "3", "4","5", "6", "7", "8", "9" };
+        
+        char firstNum = findFirstNumber(listIn, line);
+        char lastNum = findLastNumber(listIn, line);
+
         System.out.println("Output: "+ output);
+
+
     }
 }
