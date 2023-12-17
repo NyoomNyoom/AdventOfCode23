@@ -3,29 +3,35 @@ import java.util.*;
 
 public class day2 {
 
-    public static int[] informationGather(String line){
-        int gameCounter = 0;
-        
+    public static int[] informationGather(String line) {
+        int numRed = 0;
+        int numBlue = 0;
+        int numGreen = 0;
 
-
-        for(int i = 0; i < line.length(); i++){
-            if(line.charAt(i) == 'b'){
-
+        for (int i = 0; i < line.length(); i++) {
+            if (line.charAt(i) == 'r') {
+                if (line.charAt(i + 1) == 'e') {
+                    if (line.charAt(i + 2) == 'd') { // added a check for d here because the substrin 're' is in the
+                                                     // string 'green'.
+                        numRed = line.charAt(i - 2) + '0';
+                    }
+                }
             }
         }
 
-        return [0,1];
+        int[] output = { numRed, numBlue, numGreen };
+        return output;
     }
 
     public static void main(String[] args) {
-        try{
+        try {
             Scanner sc = new Scanner(new File("A:/Coding/AdventOfCode23/Day 2 Cube Conundrum/input.txt"));
 
-            while(sc.hasNextLine()){
+            while (sc.hasNextLine()) {
 
             }
-        } catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
 
-        }    
+        }
     }
 }
