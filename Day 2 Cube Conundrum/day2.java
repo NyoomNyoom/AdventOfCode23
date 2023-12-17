@@ -16,6 +16,14 @@ public class day2 {
                         numRed = line.charAt(i - 2) + '0';
                     }
                 }
+            } else if (line.charAt(i) == 'g') {
+                if (line.charAt(i) == 'r') {
+                    numGreen = line.charAt(i - 2) + '0';
+                }
+            } else if (line.charAt(i) == 'b') {
+                if (line.charAt(i) == 'l') {
+                    numBlue = line.charAt(i - 2) + '0';
+                }
             }
         }
 
